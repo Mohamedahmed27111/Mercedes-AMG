@@ -1,74 +1,119 @@
+@import 'main.scss'; // Import the main styles
+@import 'variables'; // Import the variables
+
 /* ========================================
-   RESPONSIVE DESIGN - MEDIA QUERIES
-   Mercedes AMG F1 Team Website
-   ======================================== */
-@import 'main';
-/* ========================================
-   MIXINS FOR RESPONSIVE BREAKPOINTS
+   MERCEDES AMG F1 WEBSITE - RESPONSIVE STYLES
    ======================================== */
 
-@mixin mobile-small {
-  @media (max-width: 480px) {
-    @content;
-  }
-}
+/* ========================================
+   MOBILE NAVIGATION COMPONENTS
+   ======================================== */
 
-@mixin mobile {
-  @media (max-width: 767px) {
-    @content;
-  }
-}
 
-@mixin tablet {
-  @media (min-width: 768px) and (max-width: 991px) {
-    @content;
-  }
-}
 
-@mixin tablet-down {
-  @media (max-width: 991px) {
-    @content;
-  }
-}
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
 
-@mixin desktop-small {
-  @media (min-width: 992px) and (max-width: 1199px) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin desktop-large {
-  @media (min-width: 1400px) {
-    @content;
+/* Extra Large Screens (≤1400px) */
+@media (max-width: $breakpoint-xxl) {
+  .container {
+    max-width: 1320px;
   }
 }
 
 /* ========================================
-   HEADER & NAVIGATION RESPONSIVE
+   LARGE SCREENS (≤1200px)
    ======================================== */
-
-@include tablet-down {
-  .header {
-    padding: 1rem 0;
-    
-    &.scrolled {
-      padding: 0.8rem 0;
-    }
-    
-    .header-container {
-      padding: 0 1rem;
+@media (max-width: $breakpoint-xl) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  /* Hero Section */
+  .hero {
+    .hero-content {
+      .headline {
+        font-size: 4rem;
+      }
     }
   }
   
-  .logo .logo-text {
-    font-size: 1.1rem;
-    letter-spacing: 1px;
+  /* Typography */
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  /* Drivers Section */
+  .drivers {
+    .driver-image-container {
+      width: 260px;
+      height: 320px;
+    }
+  }
+  
+  /* Car Section */
+  .car {
+    .car-content {
+      gap: 3rem;
+    }
+    
+    .car-image-container {
+      &::before {
+        width: 300px;
+        height: 300px;
+      }
+      
+      &::after {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    
+    .car-image {
+      max-width: 500px;
+      height: 300px;
+    }
+  }
+  
+  /* Achievements Section */
+  .achievements {
+    .achievement-number {
+      font-size: 4.5rem;
+    }
+  }
+  
+  /* Partners Section */
+  .partners {
+    .partners-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ========================================
+   MEDIUM-LARGE SCREENS (≤992px)
+   ======================================== */
+@media (max-width: $breakpoint-lg) {
+  html {
+    font-size: 15px;
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .section {
+    padding: $section-spacing-mobile 0;
+  }
+  
+  /* Header & Navigation */
+  .header {
+    padding: 1rem 1.5rem;
+    
+    &.scrolled {
+      padding: 0.7rem 1.5rem;
+    }
   }
   
   .nav {
@@ -78,160 +123,324 @@
   .hamburger {
     display: block;
   }
+  
+  /* Hero Section */
+  .hero {
+    .hero-content {
+      .headline {
+        font-size: 3.5rem;
+      }
+      
+      .subheadline {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  /* Typography */
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .section-content {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Drivers Section */
+  .drivers {
+    .drivers-grid {
+      grid-template-columns: 1fr;
+      gap: 5rem;
+    }
+    
+    .driver-card {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .driver-image-container {
+      width: 280px;
+      height: 340px;
+    }
+  }
+  
+  /* Car Section - Enhanced Layout */
+  .car {
+    .car-content {
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .car-specs {
+      padding-right: 0;
+      text-align: center;
+      max-width: 600px;
+      
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      ul {
+        max-width: 450px;
+        margin: 0 auto 2.5rem;
+        text-align: left;
+        
+        li {
+          justify-content: flex-start;
+          font-size: 1.1rem;
+        }
+      }
+      
+      .car-description {
+        font-size: 1.1rem;
+        text-align: center;
+      }
+    }
+    
+    .car-image-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 280px;
+      
+      &::before {
+        width: 280px;
+        height: 280px;
+      }
+      
+      &::after {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    
+    .car-image {
+      width: 100%;
+      max-width: 500px;
+      height: 280px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4));
+      
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+    }
+  }
+  
+  /* Achievements Section */
+  .achievements {
+    .achievements-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  
+  /* Partners Section */
+  .partners {
+    .partners-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .partner-logo {
+      width: 160px;
+      height: 90px;
+     
+      margin: 0 auto;
+      
+      span {
+     
+        font-size: 1.1rem;
+      }
+    }
+  }
+  
+  /* Section Animations */
+  .section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    &.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-@include mobile {
-  .header .header-container {
-    padding: 0 1rem;
+/* ========================================
+   MEDIUM SCREENS (≤768px)
+   ======================================== */
+@media (max-width: $breakpoint-md) {
+  html {
+    font-size: 14px;
   }
   
-  .logo .logo-text {
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+  .container {
+    max-width: 720px;
   }
   
+  /* Header */
+  .logo {
+    .logo-text {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Hero Section */
+  .hero {
+    .hero-content {
+      .headline {
+        font-size: 3rem;
+      }
+      
+      .subheadline {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  
+  /* Typography */
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  /* Car Section */
+  .car {
+    .car-specs {
+      h3 {
+        font-size: 1.8rem;
+      }
+      
+      ul {
+        li {
+          font-size: 1rem;
+        }
+      }
+      
+      .car-description {
+        font-size: 1rem;
+      }
+    }
+    
+    .car-image-container {
+      min-height: 220px;
+      
+      &::before {
+        width: 220px;
+        height: 220px;
+      }
+      
+      &::after {
+        width: 160px;
+        height: 160px;
+      }
+    }
+    
+    .car-image {
+      height: 220px;
+      max-width: 400px;
+    }
+  }
+  
+  /* Achievements Section */
+  .achievements {
+    .achievement-item {
+      padding: 2rem 1.5rem;
+    }
+    
+    .achievement-number {
+      font-size: 4rem;
+    }
+    
+    .achievement-label {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Newsletter Section */
+  .newsletter {
+    .newsletter-form {
+      max-width: 500px;
+    }
+  }
+}
+
+/* ========================================
+   SMALL SCREENS (≤576px)
+   ======================================== */
+@media (max-width: $breakpoint-sm) {
+  .container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  /* Header */
+  .header {
+    padding: 0.8rem 1rem;
+    
+    &.scrolled {
+      padding: 0.6rem 1rem;
+    }
+  }
+  
+  /* Hamburger Menu */
   .hamburger {
     width: 28px;
     height: 20px;
     
     span {
+      &:nth-child(1) {
+        top: 0;
+      }
+      
       &:nth-child(2) {
-        width: 70%;
+        top: 9px;
+      }
+      
+      &:nth-child(3) {
+        top: 18px;
+      }
+      
+      &.active {
+        &:nth-child(1), &:nth-child(3) {
+          top: 9px;
+        }
       }
     }
   }
   
-  .mobile-menu {
-    width: 100%;
-    max-width: none;
-    padding: 5rem 1.5rem 2rem;
-    
-    .mobile-nav-link {
-      font-size: 1.1rem;
-      padding: 0.8rem 0;
-    }
-  }
-}
-
-/* ========================================
-   HERO SECTION RESPONSIVE
-   ======================================== */
-
-@include desktop-large {
+  /* Hero Section */
   .hero {
-    .headline {
-      font-size: 5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .subheadline {
-      font-size: 1.5rem;
-      margin-bottom: 3rem;
-    }
-  }
-}
-
-@include desktop-small {
-  .hero {
-    .headline {
-      font-size: 3.5rem;
-    }
-    
-    .subheadline {
-      font-size: 1.2rem;
-    }
-  }
-}
-
-@include tablet {
-  .hero {
-    height: 90vh;
-    
     .hero-content {
-      padding: 1.5rem;
+      .headline {
+        font-size: 2.5rem;
+      }
+      
+      .subheadline {
+        font-size: 1rem;
+      }
+      
+      .cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+      }
     }
-    
-    .headline {
-      font-size: 3rem;
-      margin-bottom: 1.2rem;
-    }
-    
-    .subheadline {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-  }
-}
-
-@include mobile {
-  .hero {
-    height: 100vh;
-    min-height: 600px;
-    
-    .hero-content {
-      padding: 1rem;
-    }
-    
-    .headline {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    
-    .subheadline {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      max-width: 90%;
-    }
-    
-    .cta-button {
-      padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
-    }
-  }
-}
-
-@include mobile-small {
-  .hero {
-    .headline {
-      font-size: 1.8rem;
-    }
-    
-    .subheadline {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-/* ========================================
-   SECTION SPACING RESPONSIVE
-   ======================================== */
-
-@include tablet-down {
-  .section {
-    padding: 4rem 0;
   }
   
+  /* Typography */
   .section-title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
-  }
-  
-  .section-content {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-}
-
-@include mobile {
-  .section {
-    padding: 3rem 0;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
     
     &::after {
       width: 60px;
@@ -241,519 +450,291 @@
   }
   
   .section-content {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-  
-  .container {
-    padding: 0 1rem;
-  }
-}
-
-/* ========================================
-   DRIVERS SECTION RESPONSIVE
-   ======================================== */
-
-@include tablet {
-  .drivers-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 400px;
-  }
-  
-  .driver-image-container {
-    width: 250px;
-    height: 280px;
-  }
-}
-
-@include mobile {
-  .drivers-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    max-width: 100%;
-  }
-  
-  .driver-card {
-    padding: 0 1rem;
-  }
-  
-  .driver-image-container {
-    width: 220px;
-    height: 260px;
-    margin-bottom: 1.5rem;
-  }
-  
-  .driver-name {
-    font-size: 1.6rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .driver-subtitle {
     font-size: 1rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 2rem;
   }
   
-  .driver-description {
-    font-size: 0.9rem;
-    max-width: 280px;
-  }
-}
-
-@include mobile-small {
-  .driver-image-container {
-    width: 180px;
-    height: 220px;
-  }
-  
-  .driver-name {
-    font-size: 1.4rem;
-  }
-  
-  .driver-description {
-    max-width: 250px;
-  }
-}
-
-/* ========================================
-   CAR SECTION RESPONSIVE
-   ======================================== */
-
-@include tablet-down {
-  .car-content {
-    flex-direction: column;
-    gap: 2.5rem;
-    text-align: center;
-  }
-  
-  .car-specs {
-    order: 2;
+  /* Drivers Section */
+  .drivers {
+    .driver-image-container {
+      width: 240px;
+      height: 290px;
+    }
     
-    h3 {
+    .driver-name {
       font-size: 1.8rem;
-      margin-bottom: 1.2rem;
     }
     
-    ul li {
+    .driver-subtitle {
       font-size: 1rem;
-      margin-bottom: 0.8rem;
     }
     
-    .car-description {
+    .driver-description {
       font-size: 1rem;
     }
   }
   
-  .car-image-container {
-    order: 1;
-    
-    &::before,
-    &::after {
-      display: none;
-    }
-  }
-  
-  .car-image {
-    max-width: 400px;
-    height: 250px;
-  }
-}
-
-@include mobile {
-  .car-specs {
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    ul {
-      margin-bottom: 1.5rem;
+  /* Car Section */
+  .car {
+    .car-specs {
+      h3 {
+        font-size: 1.6rem;
+      }
       
-      li {
-        font-size: 0.9rem;
-        margin-bottom: 0.7rem;
+      ul {
+        max-width: 100%;
         
-        span {
-          display: inline-block;
-          min-width: 80px;
+        li {
+          font-size: 0.95rem;
+          
+          span {
+            min-width: 80px;
+          }
         }
+      }
+      
+      .car-description {
+        font-size: 0.95rem;
       }
     }
     
-    .car-description {
-      font-size: 0.95rem;
+    .car-image-container {
+      min-height: 180px;
+      
+      &::before {
+        width: 180px;
+        height: 180px;
+      }
+      
+      &::after {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    
+    .car-image {
+      height: 180px;
+      max-width: 320px;
     }
   }
   
-  .car-image {
-    max-width: 100%;
-    height: 200px;
-  }
-}
-
-/* ========================================
-   ACHIEVEMENTS SECTION RESPONSIVE
-   ======================================== */
-
-@include tablet {
-  .achievements-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 700px;
-  }
-  
-  .achievement-item {
-    padding: 2rem 1rem;
-  }
-  
-  .achievement-number {
-    font-size: 3rem;
-  }
-  
-  .achievement-label {
-    font-size: 1rem;
-  }
-}
-
-@include mobile {
-  .achievements-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 300px;
-  }
-  
-  .achievement-item {
-    padding: 1.5rem 1rem;
-  }
-  
-  .achievement-number {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .achievement-label {
-    font-size: 0.95rem;
-  }
-}
-
-@include mobile-small {
-  .achievement-number {
-    font-size: 2rem;
-  }
-  
-  .achievement-label {
-    font-size: 0.9rem;
-  }
-}
-
-/* ========================================
-   PARTNERS SECTION RESPONSIVE
-   ======================================== */
-
-@include tablet {
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 600px;
-  }
-  
-  .partner-logo {
-    height: 70px;
-    
-    span {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-@include mobile {
-  .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    max-width: 400px;
-  }
-  
-  .partner-logo {
-    height: 60px;
-    
-    span {
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
-    }
-  }
-}
-
-@include mobile-small {
-  .partners-grid {
-    grid-template-columns: 1fr;
-    max-width: 250px;
-  }
-  
-  .partner-logo {
-    height: 50px;
-    
-    span {
-      font-size: 0.75rem;
-    }
-  }
-}
-
-/* ========================================
-   NEWSLETTER SECTION RESPONSIVE
-   ======================================== */
-
-@include tablet-down {
-  .newsletter-form {
-    max-width: 400px;
-    gap: 1.2rem;
-  }
-  
-  input {
-    padding: 0.9rem 1.2rem;
-    font-size: 0.95rem;
-  }
-  
-  .cta-button {
-    padding: 0.9rem 1.8rem;
-    font-size: 0.9rem;
-  }
-}
-
-@include mobile {
-  .newsletter-form {
-    max-width: 100%;
-    gap: 1rem;
-  }
-  
-  input {
-    padding: 0.8rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .cta-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.85rem;
-    width: 100%;
-  }
-  
-  .success-message {
-    max-width: 100%;
-    padding: 1.2rem;
-    
-    p {
-      font-size: 1rem;
-    }
-  }
-}
-
-/* ========================================
-   FOOTER RESPONSIVE
-   ======================================== */
-
-@include mobile {
-  .footer {
-    padding: 1.5rem 0;
-    
-    p {
-      font-size: 0.8rem;
-      line-height: 1.5;
-      padding: 0 1rem;
-    }
-  }
-}
-
-/* ========================================
-   UTILITY CLASSES FOR RESPONSIVE
-   ======================================== */
-
-// Hide elements on specific breakpoints
-.hide-mobile {
-  @include mobile {
-    display: none !important;
-  }
-}
-
-.hide-tablet {
-  @include tablet {
-    display: none !important;
-  }
-}
-
-.hide-desktop {
-  @include desktop {
-    display: none !important;
-  }
-}
-
-// Show elements only on specific breakpoints
-.show-mobile {
-  display: none !important;
-  
-  @include mobile {
-    display: block !important;
-  }
-}
-
-.show-tablet {
-  display: none !important;
-  
-  @include tablet {
-    display: block !important;
-  }
-}
-
-.show-desktop {
-  display: none !important;
-  
-  @include desktop {
-    display: block !important;
-  }
-}
-
-// Responsive text sizes
-.text-responsive {
-  @include desktop-large {
-    font-size: 1.2rem;
-  }
-  
-  @include desktop {
-    font-size: 1.1rem;
-  }
-  
-  @include tablet {
-    font-size: 1rem;
-  }
-  
-  @include mobile {
-    font-size: 0.9rem;
-  }
-  
-  @include mobile-small {
-    font-size: 0.85rem;
-  }
-}
-
-// Responsive containers
-.container-fluid {
-  width: 100%;
-  padding: 0 2rem;
-  
-  @include tablet-down {
-    padding: 0 1.5rem;
-  }
-  
-  @include mobile {
-    padding: 0 1rem;
-  }
-}
-
-// Responsive margins and paddings
-.section-padding-responsive {
-  @include desktop-large {
-    padding: 10rem 0;
-  }
-  
-  @include desktop {
-    padding: 8rem 0;
-  }
-  
-  @include tablet {
-    padding: 5rem 0;
-  }
-  
-  @include mobile {
-    padding: 3rem 0;
-  }
-  
-  @include mobile-small {
-    padding: 2.5rem 0;
-  }
-}
-
-/* ========================================
-   LANDSCAPE ORIENTATION FIXES
-   ======================================== */
-
-@media (max-height: 500px) and (orientation: landscape) {
-  .hero {
-    height: 100vh;
-    min-height: 500px;
-    
-    .headline {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+  /* Achievements Section */
+  .achievements {
+    .achievements-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
     
-    .subheadline {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+    .achievement-item {
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
+  
+  /* Partners Section */
+  .partners {
+    .partners-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .partner-logo {
+      width: 140px;
+      height: 70px;
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  /* Newsletter Section */
+  .newsletter {
+    .newsletter-form {
+      gap: 2rem;
+    }
+    
+    input {
+      padding: 0.9rem 1.2rem;
     }
     
     .cta-button {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.8rem;
+      width: 100%;
+    }
+  }
+}
+
+/* ========================================
+   EXTRA SMALL SCREENS (≤480px)
+   ======================================== */
+@media (max-width: 480px) {
+  /* Car Section */
+  .car {
+    .car-image-container {
+      min-height: 150px;
+      
+      &::before {
+        width: 150px;
+        height: 150px;
+      }
+      
+      &::after {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    
+    .car-image {
+      height: 150px;
+      max-width: 280px;
     }
   }
   
-  .section {
-    padding: 2rem 0;
+  /* Partners Section */
+  .partners {
+    .partners-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .partner-logo {
+      width: 200px;
+      height: 80px;
+      margin: 0 auto;
+    }
   }
 }
 
 /* ========================================
-   HIGH DPI DISPLAYS
+   SPECIAL VIEWPORT CONDITIONS
    ======================================== */
 
-@media (-webkit-min-device-pixel-ratio: 2),
-       (min-resolution: 192dpi) {
-  
-  .hero,
-  .newsletter {
-    // Ensure background images are crisp on high DPI displays
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .driver-image,
-  .car-image {
-    // Improve image quality on retina displays
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-}
-
-/* ========================================
-   PRINT STYLES
-   ======================================== */
-
-@media print {
-  .header,
-  .hamburger,
-  .mobile-menu,
-  .menu-overlay,
-  .cta-button,
-  .newsletter {
-    display: none !important;
-  }
-  
-  .section {
-    page-break-inside: avoid;
-    padding: 2rem 0;
-  }
-  
+/* Small Height Screens */
+@media (max-height: 700px) {
   .hero {
+    min-height: 600px;
     height: auto;
-    min-height: 300px;
-    page-break-after: always;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-  }
-  
-  .section-title,
-  .headline {
-    color: black !important;
+    padding: 120px 1rem 60px;
+    
+    .hero-content {
+      .headline {
+        font-size: 2.5rem;
+      }
+      
+      .subheadline {
+        font-size: 1rem;
+      }
+    }
   }
 }
+
+/* ========================================
+   ACCESSIBILITY & USER PREFERENCES
+   ======================================== */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+ // Responsive Design
+  @media (max-width: $breakpoint-xl) {
+    .partners-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    
+    .partner-logo {
+      width: 160px;
+      height: 90px;
+    }
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    
+    .partners-header .partners-title {
+      font-size: 2.5rem;
+    }
+    
+    .partners-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .partner-logo {
+      width: 140px;
+      height: 80px;
+      
+      span {
+        font-size: 1rem;
+      }
+    }
+    
+    .partners-stats {
+      gap: 2rem;
+      
+      .stat-item .stat-number {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    .partners-header .partners-title {
+      font-size: 2rem;
+    }
+    
+    .partners-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .partner-logo {
+      width: 140px;
+      height: 75px;
+    }
+    
+    .partners-stats {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    .partners-container {
+      padding: 0 1rem;
+    }
+    
+    .partners-header {
+      margin-bottom: 2rem;
+      
+      .partners-title {
+        font-size: 1.8rem;
+      }
+      
+      .partners-subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    .partners-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .partner-logo {
+      width: 200px;
+      height: 80px;
+      
+      &:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
+    }
+  }
