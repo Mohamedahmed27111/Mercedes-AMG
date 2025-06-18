@@ -17,7 +17,6 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   // Refs for accessing DOM elements of different sections
   const heroRef = useRef(null);
@@ -63,7 +62,7 @@ const App = () => {
     background: `linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(0, 0, 0, 0.95)), url(${newsletterBg || '/api/placeholder/1920/1080'}) center/cover no-repeat fixed`
   };
   
-  // Effect hook for AOS initialization and scroll handling
+  // Effect hook for AOS initialization
   useEffect(() => {
     // Initialize AOS with configuration options
     AOS.init({
@@ -75,16 +74,8 @@ const App = () => {
     
     // Refresh AOS on component mount to ensure proper initialization
     AOS.refresh();
-
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
     
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       AOS.refresh();
     };
   }, []);
@@ -132,7 +123,7 @@ const App = () => {
   return (
     <div className="app">
       {/* Header with navigation and mobile menu */}
-      <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+      <header className="header">
         <div className="header-container">
           {/* Logo */}
           <div className="logo">
@@ -372,7 +363,7 @@ const App = () => {
       </section>
 
       {/* Footer with copyright information */}
-      <footer className="footer" data-aos="fade-up">
+      <footer className="footer" >
         <div className="container">
           <p>© 2025 Mercedes-AMG PETRONAS Formula One Team. All Rights Reserved.</p>
         </div>
@@ -382,4 +373,3 @@ const App = () => {
 };
 
 export default App;
-
