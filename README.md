@@ -1,3 +1,36 @@
+# 📌 Mercedes-AMG PETRONAS Formula One Landing Page
+
+A fully responsive, animated landing page for the **Mercedes-AMG PETRONAS Formula One Team** built with **React**, **SCSS**, and **AOS.js**.  
+This project showcases the team's drivers, car specifications, achievements, and partners, wrapped in an engaging user interface and smooth scroll-based animations.
+
+---
+
+## 🚀 Features
+
+- ⚡ **Modern React UI** with functional components and hooks  
+- 🎯 **Scroll animations** using AOS (Animate On Scroll)  
+- 📱 **Mobile-first responsive design** with a custom hamburger menu  
+- 🏎️ **Hero section, car showcase, and driver profiles**  
+- 📰 **Newsletter subscription form** with email validation  
+- 🎨 **SCSS-powered custom styling and theme management**
+
+---
+
+## 🛠️ Technologies
+
+- React.js  
+- SCSS (modular and responsive styles)  
+- AOS.js (Animate On Scroll)  
+
+---
+
+## 📂 Folder Highlights
+
+- `src/assets/` – Contains background and section images (e.g., car, drivers)  
+- `media.scss` – Media queries and responsiveness  
+- `main.scss` – Base and component styles
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
