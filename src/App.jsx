@@ -439,7 +439,7 @@ const App = () => {
           ))}
         </div>
         <div className="container footer-base">
-          <p>© 2025 Mercedes-AMG PETRONAS Formula One Team. Fan-made portfolio project, not affiliated.</p>
+          <p>© 2025 Mercedes-AMG PETRONAS Formula One Team. Fan-made portfolio project — not affiliated with Mercedes-AMG PETRONAS F1 Team, Mercedes-Benz Group or PETRONAS. All brand assets are property of their respective owners.</p>
         </div>
       </footer>
     </div>
