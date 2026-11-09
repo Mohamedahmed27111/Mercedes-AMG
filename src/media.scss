@@ -1,733 +1,236 @@
-@import 'main.scss'; // Import the main styles
-@import 'variables'; // Import the variables
+@use 'variables' as *;
 
+/* Responsive overrides. Loaded after main.scss. */
 
+@media (max-width: $bp-xl) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
 
+    li:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
 
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-/* Extra Large Screens (≤1400px) */
-@media (max-width: $breakpoint-xxl) {
-  .container {
-    max-width: 1320px;
-  }
-}
-
-/* ========================================
-   LARGE SCREENS (≤1200px)
-   ======================================== */
-@media (max-width: $breakpoint-xl) {
-  .container {
-    max-width: 1140px;
-  }
-  
-  /* Hero Section */
-  .hero {
-    .hero-content {
-      .headline {
-        font-size: 4rem;
-      }
-    }
-  }
-  
-  /* Typography */
-  .section-title {
-    font-size: 2.5rem;
-  }
-  
-  /* Drivers Section */
-  .drivers {
-    .driver-image-container {
-      width: 260px;
-      height: 320px;
-    }
-  }
-  
-  /* Car Section */
-  .car {
-    .car-content {
-      gap: 3rem;
-    }
-    
-    .car-image-container {
-      &::before {
-        width: 300px;
-        height: 300px;
-      }
-      
-      &::after {
-        width: 200px;
-        height: 200px;
-      }
-    }
-    
-    .car-image {
-      max-width: 500px;
-      height: 300px;
-    }
-  }
-  
-  /* Achievements Section */
-  .achievements {
-    .achievement-number {
-      font-size: 4.5rem;
-    }
-  }
-  
-  /* Partners Section */
-  .partners {
-    .partners-grid {
-      grid-template-columns: repeat(3, 1fr);
+    li:nth-child(n + 3) {
+      border-top: 1px solid $rule;
     }
   }
 }
 
-/* ========================================
-   MEDIUM-LARGE SCREENS (≤992px)
-   ======================================== */
-@media (max-width: $breakpoint-lg) {
-  html {
-    font-size: 15px;
-  }
-  
-  .container {
-    max-width: 960px;
-  }
-  
-  .section {
-    padding: $section-spacing-mobile 0;
-  }
-  
-  /* Header & Navigation */
-  .header {
-    padding: 1rem 1.5rem;
-    
-    &.scrolled {
-      padding: 0.7rem 1.5rem;
-    }
-  }
-  
+@media (max-width: $bp-lg) {
   .nav {
     display: none;
   }
-  
+
   .hamburger {
     display: block;
   }
-  
-  /* Hero Section */
-  .hero {
-    .hero-content {
-      .headline {
-        font-size: 3.5rem;
-      }
-      
-      .subheadline {
-        font-size: 1.2rem;
-      }
-    }
-  }
-  
-  /* Typography */
-  .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 2.5rem;
-  }
-  
-  .section-content {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-  }
-  
-  /* Drivers Section */
-  .drivers {
-    .drivers-grid {
-      grid-template-columns: 1fr;
-      gap: 5rem;
-    }
-    
-    .driver-card {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    
-    .driver-image-container {
-      width: 280px;
-      height: 340px;
-    }
-  }
-  
-  /* Car Section - Enhanced Layout */
-  .car {
-    .car-content {
-      flex-direction: column;
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .car-specs {
-      padding-right: 0;
-      text-align: center;
-      max-width: 600px;
-      
-      h3 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      ul {
-        max-width: 450px;
-        margin: 0 auto 2.5rem;
-        text-align: left;
-        
-        li {
-          justify-content: flex-start;
-          font-size: 1.1rem;
-        }
-      }
-      
-      .car-description {
-        font-size: 1.1rem;
-        text-align: center;
-      }
-    }
-    
-    .car-image-container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      min-height: 280px;
-      
-      &::before {
-        width: 280px;
-        height: 280px;
-      }
-      
-      &::after {
-        width: 200px;
-        height: 200px;
-      }
-    }
-    
-    .car-image {
-      width: 100%;
-      max-width: 500px;
-      height: 280px;
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4));
-      
-      &:hover {
-        transform: translateY(-8px) scale(1.02);
-      }
-    }
-  }
-  
-  /* Achievements Section */
-  .achievements {
-    .achievements-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-  }
-  
-  /* Partners Section */
-  .partners {
-    .partners-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    .partner-logo {
-      width: 160px;
-      height: 90px;
-     
-      margin: 0 auto;
-      
-      span {
-     
-        font-size: 1.1rem;
-      }
-    }
-  }
-  
-  /* Section Animations */
-  .section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    
-    &.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
 
-/* ========================================
-   MEDIUM SCREENS (≤768px)
-   ======================================== */
-@media (max-width: $breakpoint-md) {
-  html {
-    font-size: 14px;
+  .split,
+  .driver,
+  .driver.reverse {
+    grid-template-columns: 1fr;
   }
-  
-  .container {
-    max-width: 720px;
-  }
-  
-  /* Header */
-  .logo {
-    .logo-text {
-      font-size: 1.1rem;
-    }
-  }
-  
-  /* Hero Section */
-  .hero {
-    .hero-content {
-      .headline {
-        font-size: 3rem;
-      }
-      
-      .subheadline {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-      }
-    }
-  }
-  
-  /* Typography */
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  /* Car Section */
-  .car {
-    .car-specs {
-      h3 {
-        font-size: 1.8rem;
-      }
-      
-      ul {
-        li {
-          font-size: 1rem;
-        }
-      }
-      
-      .car-description {
-        font-size: 1rem;
-      }
-    }
-    
-    .car-image-container {
-      min-height: 220px;
-      
-      &::before {
-        width: 220px;
-        height: 220px;
-      }
-      
-      &::after {
-        width: 160px;
-        height: 160px;
-      }
-    }
-    
-    .car-image {
-      height: 220px;
-      max-width: 400px;
-    }
-  }
-  
-  /* Achievements Section */
-  .achievements {
-    .achievement-item {
-      padding: 2rem 1.5rem;
-    }
-    
-    .achievement-number {
-      font-size: 4rem;
-    }
-    
-    .achievement-label {
-      font-size: 1.1rem;
-    }
-  }
-  
-  /* Newsletter Section */
-  .newsletter {
-    .newsletter-form {
-      max-width: 500px;
-    }
-  }
-}
 
-/* ========================================
-   SMALL SCREENS (≤576px)
-   ======================================== */
-@media (max-width: $breakpoint-sm) {
-  .container {
-    max-width: 100%;
-    padding: 0 1.5rem;
+  .driver.reverse .driver-visual {
+    order: 0;
   }
-  
-  /* Header */
-  .header {
-    padding: 0.8rem 1rem;
-    
-    &.scrolled {
-      padding: 0.6rem 1rem;
-    }
+
+  .split-lead {
+    position: static;
   }
-  
-  /* Hamburger Menu */
-  .hamburger {
-    width: 28px;
-    height: 20px;
-    
-    span {
-      &:nth-child(1) {
-        top: 0;
-      }
-      
-      &:nth-child(2) {
-        top: 9px;
-      }
-      
-      &:nth-child(3) {
-        top: 18px;
-      }
-      
-      &.active {
-        &:nth-child(1), &:nth-child(3) {
-          top: 9px;
-        }
-      }
-    }
+
+  .driver-visual {
+    max-width: 480px;
+    aspect-ratio: 1 / 1;
   }
-  
-  /* Hero Section */
-  .hero {
-    .hero-content {
-      .headline {
-        font-size: 2.5rem;
-      }
-      
-      .subheadline {
-        font-size: 1rem;
-      }
-      
-      .cta-button {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-      }
-    }
+
+  .spec-groups {
+    grid-template-columns: 1fr;
   }
-  
-  /* Typography */
-  .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    
-    &::after {
-      width: 60px;
-      height: 3px;
-      bottom: -12px;
-    }
-  }
-  
-  .section-content {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  /* Drivers Section */
-  .drivers {
-    .driver-image-container {
-      width: 240px;
-      height: 290px;
-    }
-    
-    .driver-name {
-      font-size: 1.8rem;
-    }
-    
-    .driver-subtitle {
-      font-size: 1rem;
-    }
-    
-    .driver-description {
-      font-size: 1rem;
-    }
-  }
-  
-  /* Car Section */
-  .car {
-    .car-specs {
-      h3 {
-        font-size: 1.6rem;
-      }
-      
-      ul {
-        max-width: 100%;
-        
-        li {
-          font-size: 0.95rem;
-          
-          span {
-            min-width: 80px;
-          }
-        }
-      }
-      
-      .car-description {
-        font-size: 0.95rem;
-      }
-    }
-    
-    .car-image-container {
-      min-height: 180px;
-      
-      &::before {
-        width: 180px;
-        height: 180px;
-      }
-      
-      &::after {
-        width: 120px;
-        height: 120px;
-      }
-    }
-    
-    .car-image {
-      height: 180px;
-      max-width: 320px;
-    }
-  }
-  
-  /* Achievements Section */
-  .achievements {
-    .achievements-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .achievement-item {
-      width: 300px;
-      margin: 0 auto;
-    }
-  }
-  
-  /* Partners Section */
-  .partners {
-    .partners-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    
-    .partner-logo {
+
+  .legend {
+    grid-template-columns: 140px 1fr;
+
+    img {
       width: 140px;
-      height: 70px;
-      
-      span {
-        font-size: 0.9rem;
-      }
     }
   }
-  
-  /* Newsletter Section */
-  .newsletter {
-    .newsletter-form {
-      gap: 2rem;
+
+  .legend-figures {
+    grid-column: 1 / -1;
+  }
+
+  .tier {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .footer .footer-grid {
+    grid-template-columns: 1fr 1fr;
+
+    .footer-brand {
+      grid-column: 1 / -1;
     }
-    
-    input {
-      padding: 0.9rem 1.2rem;
-    }
-    
-    .cta-button {
-      width: 100%;
-    }
+  }
+
+  .scroll-cue {
+    display: none;
   }
 }
 
-/* ========================================
-   EXTRA SMALL SCREENS (≤480px)
-   ======================================== */
-@media (max-width: 480px) {
-  /* Car Section */
-  .car {
-    .car-image-container {
-      min-height: 150px;
-      
-      &::before {
-        width: 150px;
-        height: 150px;
-      }
-      
-      &::after {
-        width: 100px;
-        height: 100px;
-      }
-    }
-    
-    .car-image {
-      height: 150px;
-      max-width: 280px;
-    }
+@media (max-width: $bp-md) {
+  html {
+    font-size: 15px;
   }
-  
-  /* Partners Section */
-  .partners {
-    .partners-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    .partner-logo {
-      width: 200px;
-      height: 80px;
-      margin: 0 auto;
-    }
-  }
-}
 
-/* ========================================
-   SPECIAL VIEWPORT CONDITIONS
-   ======================================== */
-
-/* Small Height Screens */
-@media (max-height: 700px) {
   .hero {
-    min-height: 600px;
-    height: auto;
-    padding: 120px 1rem 60px;
-    
-    .hero-content {
-      .headline {
-        font-size: 2.5rem;
-      }
-      
-      .subheadline {
-        font-size: 1rem;
-      }
+    .hero-bg {
+      background-position: 70% center;
+    }
+
+    .hero-shade {
+      background:
+        linear-gradient(0deg, $background-color 4%, rgba($background-color, 0.55) 60%, rgba($background-color, 0.4) 100%);
+    }
+  }
+
+  .hero-facts {
+    grid-template-columns: 1fr 1fr;
+
+    li:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    li:nth-child(n + 3) {
+      border-top: 1px solid $rule;
+    }
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .facts div,
+  .facts.compact div {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .bars {
+    height: 260px;
+
+    .bar-value {
+      font-size: 0.9rem;
+    }
+
+    .bar-pos {
+      display: none;
     }
   }
 }
 
-/* ========================================
-   ACCESSIBILITY & USER PREFERENCES
-   ======================================== */
+@media (max-width: $bp-sm) {
+  .logo .logo-text {
+    strong {
+      font-size: 1.05rem;
+    }
 
-/* Reduced Motion Support */
+    em {
+      display: none;
+    }
+  }
+
+  .legend {
+    grid-template-columns: 1fr;
+
+    img {
+      width: 100%;
+      max-width: 220px;
+    }
+  }
+
+  .legend-figures {
+    gap: 1.6rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+
+    li,
+    li + li {
+      padding: 1.6rem 0;
+      border-left: 0;
+    }
+
+    li + li {
+      border-top: 1px solid $rule;
+    }
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .form-group input {
+      border-right: 1px solid rgba($accent-color, 0.3);
+    }
+
+    .error-message {
+      position: static;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .footer .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 640px) and (min-width: $bp-lg) {
+  .hero {
+    padding-top: 6rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+
+  .marquee .marquee-track {
+    animation: none;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  .hero .headline .line > span,
+  .hero .hero-eyebrow,
+  .hero .subheadline,
+  .hero .hero-actions,
+  .hero-facts {
+    opacity: 1;
+    transform: none;
+  }
+
+  .bars .bar,
+  .ownership .own-bar span {
+    transform: none;
   }
 }
-
-
-
- // Responsive Design
-  @media (max-width: $breakpoint-xl) {
-    .partners-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-    
-    .partner-logo {
-      width: 160px;
-      height: 90px;
-    }
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    
-    .partners-header .partners-title {
-      font-size: 2.5rem;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    
-    .partner-logo {
-      width: 140px;
-      height: 80px;
-      
-      span {
-        font-size: 1rem;
-      }
-    }
-    
-    .partners-stats {
-      gap: 2rem;
-      
-      .stat-item .stat-number {
-        font-size: 2rem;
-      }
-    }
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    .partners-header .partners-title {
-      font-size: 2rem;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    
-    .partner-logo {
-      width: 140px;
-      height: 75px;
-    }
-    
-    .partners-stats {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    .partners-container {
-      padding: 0 1rem;
-    }
-    
-    .partners-header {
-      margin-bottom: 2rem;
-      
-      .partners-title {
-        font-size: 1.8rem;
-      }
-      
-      .partners-subtitle {
-        font-size: 1rem;
-      }
-    }
-    
-    .partners-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    .partner-logo {
-      width: 200px;
-      height: 80px;
-      
-      &:hover {
-        transform: translateY(-4px) scale(1.02);
-      }
-    }
-  }
